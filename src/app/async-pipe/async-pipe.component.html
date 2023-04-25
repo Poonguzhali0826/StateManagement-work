@@ -1,0 +1,48 @@
+<p>async-pipe works!</p>
+<div class="container">
+    <div *ngIf="data$ | async as data">
+        <div *ngFor="let user of data.users">{{user.name}}</div>
+        ----------
+        <div *ngFor="let user of data.userNames">{{user}}</div>
+        ----------
+        <div *ngFor="let user of data.filteredNames">{{user.name}}</div>
+    </div>
+
+    <button class="btn btn-primary mt-5" type="submit" #validate (click)="rxjsObservable()">Click me!</button>
+
+    <!-- <input type="text" [formControl]="input"> -->
+
+    <h1>{{counter}}</h1>
+
+
+    <div>
+        <input type="text" id="input1">
+        <input type="text" id="input2">
+
+        <p>combined Value: <span></span></p>
+    </div>
+
+    <div>
+        <input type="text" id="input1" [(ngModel)]="str" > {{str}}
+        
+        <button class="btn btn-success" (click)="palindrome()">click</button>
+        <!-- <p>Plaindrome: {{palindrome}}</p> -->
+    </div>
+    <!-- <google-map height="400px"
+            width="750px"
+            [center]="center"
+            [zoom]="zoom"
+            (mapClick)="moveMap($event)"
+            (mapMousemove)="move($event)">
+            <map-marker #marker="mapMarker"
+            *ngFor="let markerPosition of markerPositions"
+            [position]="markerPosition"
+            (mapClick)="openInfoWindow(marker)"></map-marker>
+<map-info-window>Info Window content</map-info-window>
+</google-map>
+
+<div>Latitude: {{display?.lat}}</div>
+<div>Longitude: {{display?.lng}}</div> -->
+
+</div>
+

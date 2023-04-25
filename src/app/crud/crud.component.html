@@ -1,0 +1,101 @@
+<div class="row m-5">
+    <div class="col-md-8 mx-auto">
+        <div class="d-flex justify-content-between">
+            <h3 class="">Employee Details</h3>
+            <button type="button" class="btn btn-primary" (click)="addEditModal(template, 'add','')" style="width: 143px;
+            font-size: 20px;">Add</button>
+        </div>
+        <table class="table table-hover mt-5">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone No</th>
+                    <th scope="col">Exp</th>
+                    <th scope="col">Package</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of employeeDetails, index as i">
+                    <th scope="row">{{i + 1}}</th>
+                    <td>{{item.firstName}}</td>
+                    <td>{{item.lastName}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.phoneNo}}</td>
+                    <td>{{item.exp}}</td>
+                    <td>{{item.package}}</td>
+                    <td>
+                        <i class="fas fa-edit fs-5  fw-1 pe-3" (click)="addEditModal(template, 'edit' , item.id)"
+                            style="color: #0d6efd;"></i>
+                        <i class="fas fa-trash-can fs-5 " (click)="deleteModal(delete, item.id)"
+                            style="color: #dc3545;"></i>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+
+<ng-template #template>
+    <div class="row m-3 p-3">
+        <h3 class="mb-2 text-center" *ngIf="key=='add'">Add employee Details</h3>
+        <h3 class="mb-2 text-center" *ngIf="key=='edit'">Edit employee Details</h3>
+
+        <form [formGroup]="registerForm">
+            <div class="mb-3">
+                <label class="form-label">First Name</label>
+                <input type="name" class="form-control" placeholder="First Name" formControlName="firstName" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+                <div *ngIf="submitted && f.firstName.errors" class="invalid-field" style="color:red">
+                    <div *ngIf="f.firstName.errors.required">First Name is required*</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Last Name</label>
+                <input type="name" class="form-control" placeholder="Last Name" formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+                <div *ngIf="submitted && f.lastName.errors" class="invalid-field" style="color:red">
+                    <div *ngIf="f.lastName.errors.required">Last Name is required*</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Email address</label>
+                <input type="email" class="form-control" placeholder="Email" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                <div *ngIf="submitted && f.email.errors" class="invalid-field" style="color:red">
+                    <div *ngIf="f.email.errors.required">Last Name is required*</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Phone Number</label>
+                <input type="text" class="form-control" placeholder="Phone No" formControlName="phoneNo">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Exp</label>
+                <input type="number" class="form-control" placeholder="Experience" formControlName="exp">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Salary</label>
+                <input type="number" class="form-control" placeholder="Salary" formControlName="package">
+            </div>
+            <div class="m-3 d-flex justify-content-end">
+                <button type="submit" (click)="onSubmit()" class="btn btn-primary m-1">Submit</button>
+                <button type="submit" (click)="close()" class="btn btn-danger m-1">Close</button>
+            </div>
+        </form>
+
+    </div>
+</ng-template>
+
+<ng-template #delete>
+    <div class="row m-3 p-3">
+        <h3 class="text-center">Are you sure?</h3>
+        <div class="d-flex justify-content-center mt-3">
+            <button type="submit" (click)="deleteDetails()" class="btn btn-danger me-2">Delete</button>
+            <button type="submit" (click)="close()" class="btn btn-primary ms-0">Cancel</button>
+        </div>
+    </div>
+</ng-template>

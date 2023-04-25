@@ -1,0 +1,48 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "employees": [
+    {
+      "firstName": "test",
+      "lastName": "t",
+      "email": "test123@gmail.com",
+      "phoneNo": "1234567890",
+      "exp": 3,
+      "package": 278904,
+      "id": 10
+    },
+    {
+      "firstName": "tret",
+      "lastName": "t",
+      "email": "te123@gmail.com",
+      "phoneNo": "12456",
+      "exp": 4,
+      "package": 45678,
+      "id": 11
+    },
+    {
+      "firstName": "res",
+      "lastName": "rest",
+      "email": "res12@gmail.com",
+      "phoneNo": "123456789",
+      "exp": 19,
+      "package": 24325346,
+      "id": 12
+    }
+  ]
+}
